@@ -96,6 +96,7 @@ public class Comments {
         if (secure) {
         	xif.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, false); // Compliant
         	xif.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, false);  // compliant
+            xif.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
         }
          
         var xsr = xif.createXMLStreamReader(new StringReader(xml));
