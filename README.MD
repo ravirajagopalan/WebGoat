@@ -161,15 +161,15 @@ Click `show paths` in order to see the dataflow path that resulted in this alert
 
 </p>
 </details>
-<!-- 
+
 <details>
 <p>  
   
 <summary>Fix the Security Alert</summary>
 
-In order to fix this specific alert, we will need to ensure that the destination file paths is the only location where files can be written to.
+In order to fix this specific alert, we will need to ensure disable the parsing of this user-controlled data.
 
-Click on the `Code` tab and [Edit](https://docs.github.com/en/free-pro-team@latest/github/managing-files-in-a-repository/editing-files-in-your-repository) the `index.js` file. Navigate to Line 264 of the `index.js` file and modify the line:
+Click on the `Code` tab and [Edit](https://docs.github.com/en/free-pro-team@latest/github/managing-files-in-a-repository/editing-files-in-your-repository) the `webgoat-lessons/xxe/src/main/java/org/owasp/webgoat/xxe/Comments.java` file. Navigate to Line 101t of the `Comments.java file and modify the line:
 
 `var srcpath = path.resolve(cwd, header.linkname)`
 
@@ -213,7 +213,7 @@ Click on the security alert and notice that it details when the fix was made, by
 
 </p>
 </details>
-   -->
+  
    
 ## Next Steps
 
