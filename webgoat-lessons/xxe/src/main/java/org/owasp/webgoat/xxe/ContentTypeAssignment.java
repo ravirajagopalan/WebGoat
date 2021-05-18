@@ -67,7 +67,7 @@ public class ContentTypeAssignment extends AssignmentEndpoint {
         if (null != contentType && contentType.contains(MediaType.APPLICATION_XML_VALUE)) {
             String error = "";
             try {
-            	boolean secure = false;
+            	boolean secure = true;
             	if (null != request.getSession().getAttribute("applySecurity")) {
             		secure = true;
             	}
