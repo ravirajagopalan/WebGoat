@@ -93,10 +93,10 @@ public class Comments {
         var jc = JAXBContext.newInstance(Comment.class);
         var xif = XMLInputFactory.newInstance();
         
-        if (secure) {
+//         if (secure) {
         	xif.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, false); // Compliant
         	xif.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, false);  // compliant
-        }
+//         }
          
         var xsr = xif.createXMLStreamReader(new StringReader(xml));
 
