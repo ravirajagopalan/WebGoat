@@ -49,8 +49,6 @@ public class VulnerableComponentsLesson extends AssignmentEndpoint {
         	if (!StringUtils.isEmpty(payload)) {
         		payload = payload.replace("+", "").replace("\r", "").replace("\n", "").replace("> ", ">").replace(" <", "<");
         	}
-            xstream.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, Boolean.FALSE);
-            xstream.setProperty(XMLInputFactory.SUPPORT_DTD, Boolean.FALSE);
             contact = (Contact) xstream.fromXML(payload);
         } catch (Exception ex) {
             return failed(this).feedback("vulnerable-components.close").output(ex.getMessage()).build();
