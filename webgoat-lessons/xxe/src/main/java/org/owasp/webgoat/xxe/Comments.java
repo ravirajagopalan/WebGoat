@@ -92,14 +92,8 @@ public class Comments {
     protected Comment parseXml(String xml, boolean secure) throws JAXBException, XMLStreamException {
         var jc = JAXBContext.newInstance(Comment.class);
         var xif = XMLInputFactory.newInstance();
-        
-         if (secure) {
-            xif.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, false); // Compliant
-            xif.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, false);  // compliant
-         }
-         
-        xif.setProperty(XMLInputFactory.SUPPORT_DTD, false);
-        xif.setProperty("javax.xml.stream.isSupportingExternalEntities", false);
+
+   
         var xsr = xif.createXMLStreamReader(new StringReader(xml));
 
         var unmarshaller = jc.createUnmarshaller();
