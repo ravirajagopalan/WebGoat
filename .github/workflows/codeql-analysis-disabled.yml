@@ -1,3 +1,5 @@
+# Enable this workflow by removing line 27 or by following the tutorial in the readme 
+#
 # For most projects, this workflow file will not need changing; you simply need
 # to commit it to your repository.
 #
@@ -22,6 +24,7 @@ on:
 
 jobs:
   analyze:
+    if: false
     name: Analyze
     runs-on: ubuntu-latest
     permissions:
