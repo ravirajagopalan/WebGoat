@@ -169,7 +169,7 @@ Click `show paths` in order to see the dataflow path that resulted in this alert
 
 In order to fix this specific alert, we will need to ensure disable the parsing of this user-controlled data.
 
-Click on the `Code` tab and [Edit](https://docs.github.com/en/free-pro-team@latest/github/managing-files-in-a-repository/editing-files-in-your-repository) the `webgoat-lessons/xxe/src/main/java/org/owasp/webgoat/xxe/Comments.java` file. Navigate to Line 101t of the `Comments.java file and modify the line:
+Click on the `Code` tab and [Edit](https://docs.github.com/en/free-pro-team@latest/github/managing-files-in-a-repository/editing-files-in-your-repository) the `webgoat-lessons/xxe/src/main/java/org/owasp/webgoat/xxe/Comments.java` file. Navigate to Line 97 of the `Comments.java file and modify the line:
 
 ```java
 var xsr = xif.createXMLStreamReader(new StringReader(xml));
@@ -183,7 +183,7 @@ xif.setProperty("javax.xml.stream.isSupportingExternalEntities", false);
 var xsr = xif.createXMLStreamReader(new StringReader(xml));
 ```
 
-Click `Create a new branch for this commit and start a pull request`, name the branch `fix-zip-slip`, and create the Pull Request.
+Click `Create a new branch for this commit and start a pull request`, name the branch `fix-xml-reader`, and create the Pull Request.
 
 #### Pull Request Status Check
 
