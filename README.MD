@@ -171,11 +171,17 @@ In order to fix this specific alert, we will need to ensure disable the parsing 
 
 Click on the `Code` tab and [Edit](https://docs.github.com/en/free-pro-team@latest/github/managing-files-in-a-repository/editing-files-in-your-repository) the `webgoat-lessons/xxe/src/main/java/org/owasp/webgoat/xxe/Comments.java` file. Navigate to Line 101t of the `Comments.java file and modify the line:
 
-`var srcpath = path.resolve(cwd, header.linkname)`
+```java
+var xsr = xif.createXMLStreamReader(new StringReader(xml));
+```
 
 to
 
-`var srcpath = path.join(cwd, path.join('/', header.linkname))`
+```java
+xif.setProperty(XMLInputFactory.SUPPORT_DTD, false);
+xif.setProperty("javax.xml.stream.isSupportingExternalEntities", false);
+var xsr = xif.createXMLStreamReader(new StringReader(xml));
+```
 
 Click `Create a new branch for this commit and start a pull request`, name the branch `fix-zip-slip`, and create the Pull Request.
 
@@ -183,33 +189,34 @@ Click `Create a new branch for this commit and start a pull request`, name the b
 
 In the Pull Request, you will notice that the CodeQL Analysis has started as a status check. Wait until it completes.
 
-<img src="https://user-images.githubusercontent.com/6920330/96752215-2adec300-139c-11eb-9c5e-3a04f24ba0bf.png" width="80%"/>
+<img width="885" alt="Screenshot 2021-05-19 at 09 41 53" src="https://user-images.githubusercontent.com/24505883/118774801-8156a600-b886-11eb-8ad1-69f5f62b0a59.png">
 
 #### Security Alert Details
 
 After the Workflow has completed click on `Details` by the `Code Scanning Results / CodeQL` status check. 
 
-<img src="https://user-images.githubusercontent.com/6920330/96752487-85781f00-139c-11eb-943d-602f2de98998.png" width="80%"/>
+<img width="795" alt="Screenshot 2021-05-19 at 09 46 18" src="https://user-images.githubusercontent.com/24505883/118775330-1a85bc80-b887-11eb-8f32-eedd8c453acd.png">
+
 
 #### Fixed Alert
 
-Notice that Code Scanning has detected that this Pull Request will fix the Zip Slip vulnerability that was detected before.
-
-<img src="https://user-images.githubusercontent.com/6920330/96752486-85781f00-139c-11eb-9a7e-3ccbc81da3d1.png" width="80%"/>
+Notice that Code Scanning has detected that this Pull Request will fix the vulnerability that was detected before.
+  
+<img width="734" alt="Screenshot 2021-05-19 at 09 46 53" src="https://user-images.githubusercontent.com/24505883/118775383-2a050580-b887-11eb-86f0-334d37cc60c3.png">
 
 Merge the Pull Request. After the Pull Request has been merged, another Workflow will kick off to scan the repository for any vulnerabilties. 
 
 #### Closed Security Alerts
 
-After the final Workflow has completed, navigate back to the `Security` tab and click `Closed`. Notice that the Zip Slip security alert now shows up as a closed issue.
+After the final Workflow has completed, navigate back to the `Security` tab and click `Closed`. Notice that the XML external identity alert now shows up as a closed issue.
 
-<img src="https://user-images.githubusercontent.com/6920330/96753441-e0f6dc80-139d-11eb-9a2a-d53075b6331e.png" width="80%"/>
+<img width="937" alt="Screenshot 2021-05-19 at 09 53 21" src="https://user-images.githubusercontent.com/24505883/118776429-46557200-b888-11eb-8810-2768c9329c8e.png">
 
 #### Traceability
 
 Click on the security alert and notice that it details when the fix was made, by whom, and the specific commit. This provides full traceability to detail when and how a security alert was fixed and exactly what was changed to remediate the issue.
 
-<img src="https://user-images.githubusercontent.com/6920330/96753440-e05e4600-139d-11eb-81ed-c22e4f41d74a.png" width="80%"/>
+<img width="924" alt="Screenshot 2021-05-19 at 09 54 01" src="https://user-images.githubusercontent.com/24505883/118776315-26be4980-b888-11eb-968c-e863c5b01266.png">
 
 </p>
 </details>
